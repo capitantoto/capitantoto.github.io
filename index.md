@@ -11,7 +11,7 @@ syndicate (joint-Kelly), flagged crypto-wallet fraud (Muun), and matched
 people looking for love (Sitch). The common thread: problems where
 statistics meets the P&L — risk, matching, pricing, optimization.
 
-MSc in Mathematical Statistics · BSc in Economics (both UBA) · statistics TA
+MSc in Mathematical Statistics · BA in Economics (both UBA) · statistics TA
 at the Instituto de Cálculo, because explaining something is the only way I
 trust that I understand it.
 
@@ -40,7 +40,7 @@ statistics consultancy.**
 - [pydatajson](https://github.com/datosgobar/pydatajson) — CKAN open-data
   metadata library for Argentina's national data portal, featured in the
   IADB's "Code for Development" program
-- Election-night forecasting from partial counts — BSc thesis in Economics.
+- Election-night forecasting from partial counts — BA thesis in Economics.
   [Repo](https://github.com/capitantoto/tesis_mesis)
 
 ## Writing
