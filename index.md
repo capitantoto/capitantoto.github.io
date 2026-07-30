@@ -29,8 +29,9 @@ statistics consultancy.**
   Stochastic Models Seminar, FCEN-UBA
 - Co-developed the income-optimization engine behind
   [*Optimal bidding: a dual approach*](http://papers.adkdd.org/2019/papers/adkdd19-pita-optimal.pdf)
-  (AdKDD 2019) — RTB bidding across 1M+ auctions/second at Jampp; presented
-  at [PyData Argentina 2019](https://pydata.org/cordoba2019/speaker/profile/43/gonzalo-barrera-borla/)
+  (AdKDD 2019) — RTB bidding across 1M+ auctions/second at Jampp.
+  [Talk video](https://www.youtube.com/watch?v=tGC1mRJ7DQU) — PyData
+  Córdoba, Argentina (2019)
 - *Matchmaking and decision-making in data science* — Universidad de San
   Andrés, MCD (2026).
   [Notebook & slides](https://github.com/capitantoto/matchmaking-udesa)
