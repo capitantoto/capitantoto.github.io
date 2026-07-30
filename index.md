@@ -2,14 +2,14 @@
 layout: default
 ---
 
-Math nerd. Teacher by heart, engineer by trade. Buenos Aires (UTC-3, ~ET).
+Buenos Aires (UTC-3, ~ET).
 
 Statistician / ML engineer. My models have priced programmatic ad auctions ([Jampp](https://www.jampp.com/)) and NASCAR fan-club subscriptions, sized parlays for a horse race betting syndicate, flagged crypto-wallet fraud ([Muun](https://muun.com/)), and matched people looking for love ([Sitch](https://download.joinsitch.com/)). I really like problems where statistics meets the P&L — risk, matching, pricing, optimization.
 
 MSc in Mathematical Statistics · BA in Economics (both UBA) · (former) statistics TA
 at the [Instituto de Cálculo](https://www.ic.fcen.uba.ar/).
 
-**Taking on: scoped consulting projects or embedded IC/staff roles if the problem is very good. All billing through [Borlandux](borlandux.md).**
+**Taking on: scoped consulting projects or embedded IC/staff roles if the problem is very good. All billing through [Borlandux](/borlandux/).**
 
 ## Work & talks
 
