@@ -1,3 +1,7 @@
+---
+layout: default
+---
+
 # Gonzalo Barrera Borla
 
 Math nerd. Teacher by heart, engineer by trade. Buenos Aires (remote-friendly).
