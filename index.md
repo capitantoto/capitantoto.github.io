@@ -9,41 +9,25 @@ Statistician / ML engineer. My models have priced programmatic ad auctions ([Jam
 MSc in Mathematical Statistics · BA in Economics (both UBA) · (former) statistics TA
 at the [Instituto de Cálculo](https://www.ic.fcen.uba.ar/).
 
-**Taking on: scoped consulting projects or embedded IC/staff roles if the problem is very good. All billing through [Borlandux](/borlandux/).**
+**Taking on: scoped consulting projects, or embedded IC/staff roles if the problem is very good. All billing through [Borlandux](/borlandux/). Open to relocating if your company is amazing.**
 
 ## Work & talks
 
-- *Fermat distances in kernel density classifiers* — MSc thesis (2026, dir.
-  Pablo Groisman): density-based geodesic distances for nonparametric
-  classification, plus a scikit-learn-compatible open-source library.
-  [Code & thesis (PDF)](https://github.com/capitantoto/fermat) ·
-  [seminar slides](https://github.com/capitantoto/fermat/blob/HEAD/docs/seminario-modesto.pdf) —
-  Stochastic Models Seminar, FCEN-UBA
-- Co-developed the income-optimization engine behind
-  [*Optimal bidding: a dual approach*](http://papers.adkdd.org/2019/papers/adkdd19-pita-optimal.pdf)
-  (AdKDD 2019) — RTB bidding across 1M+ auctions/second at Jampp.
-  [Talk video](https://www.youtube.com/watch?v=tGC1mRJ7DQU) — PyData
-  Córdoba, Argentina (2019)
-- *Matchmaking and decision-making in data science* — Universidad de San
-  Andrés, MCD (2026).
-  [Notebook & slides](https://github.com/capitantoto/matchmaking-udesa)
-- *Machine Learning in Graphs* — external professor, FCEN-UBA (2021), with
-  Martín Elías Costa: video lectures on YouTube, materials at
-  [fcen-amateur](https://github.com/fcen-amateur)
-- [pydatajson](https://github.com/datosgobar/pydatajson) — CKAN open-data
-  metadata library for Argentina's national data portal, featured in the
-  IADB's "Code for Development" program
-- Election-night forecasting from partial counts — BA thesis in Economics.
-  [Repo](https://github.com/capitantoto/tesis_mesis)
+- *Fermat distances in kernel density classifiers* (MSc Stat thesis): density-based geodesic distances in Riemannian manifolds for nonparametric classification, incl. a `scikit-learn`-compatible library ([fkdc](https://github.com/capitantoto/fermat)) backing the [thesis](https://github.com/capitantoto/fermat/blob/main/docs/tesis.pdf). [Code](https://github.com/capitantoto/fermat). Instituto del Cálculo, [FCEN](https://exactas.uba.ar/)-UBA, (preprint, 2026).
+- Co-developed the income-optimization engine behind *Optimal bidding: a dual approach*: globally optimal RTB bidding across 1M+ auctions/s at Jampp. ([AdKDD](http://papers.adkdd.org/2019/papers/adkdd19-pita-optimal.pdf) & [PyData AR](https://www.youtube.com/watch?v=tGC1mRJ7DQU)) (2019)
+- *Machine Learning in Graphs*: A semester course on learning & optimization in graph-structured data, ([materials](https://github.com/fcen-amateur/aa-en-grafos) & [video lectures](https://www.youtube.com/playlist?list=PL1WsZAYeCpYUA-k5Ry5O803GpipEnoFQk) fully open.  W/  Martín Elías Costa, Ph.D. FCEN-UBA (2021)
+- *Si nos organizamos, nos enamoramos todos*: embedding learning algorithms' random estimates in linear optimization techniques, applied to love-finding without swiping ([Notebook & slides](https://github.com/capitantoto/matchmaking-udesa)) — Sitch & [Universidad de San Andrés, MCD](https://udesa.edu.ar/maestria-en-ciencia-de-datos) (2026).  
+- *The limits of electoral preddictability* (BA Econ thesis): Monte Carlo simulations of voting night's partial tallies for Buenos Aires legislative elections, using open data ([code](https://github.com/capitantoto/tesis_mesis), [thesis](https://github.com/capitantoto/tesis_mesis/blob/master/texes/tesis.pdf)). [FCE](https://economicas.uba.ar/)-UBA (2014).
+- [pydatajson](https://github.com/datosgobar/pydatajson) — CKAN open-data metadata library for Argentina's national data portal, featured in the IADB's "Code for Development" program
 
 ## Writing
 
-Coming soon: the thesis, in plain words, in two posts.
+Coming soon.
 
 ## Elsewhere
 
-[GitHub](https://github.com/capitantoto) ·
-[LinkedIn](https://www.linkedin.com/in/gonzabb/) ·
+[GitHub](https://github.com/capitantoto).
+[LinkedIn](https://www.linkedin.com/in/gonzabb/)·
 [gonzalobb@gmail.com](mailto:gonzalobb@gmail.com)
 
 ---
