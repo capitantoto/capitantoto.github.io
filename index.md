@@ -50,7 +50,7 @@ Coming soon: the thesis, in plain words, in two posts.
 ## Elsewhere
 
 [GitHub](https://github.com/capitantoto) ·
-[LinkedIn](https://www.linkedin.com/in/gonzalo-barrera-borla-4a6b3711/) ·
+[LinkedIn](https://www.linkedin.com/in/gonzabb/) ·
 [gonzalobb@gmail.com](mailto:gonzalobb@gmail.com)
 
 ---
