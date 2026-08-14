@@ -22,7 +22,8 @@ at the [Instituto de Cálculo](https://www.ic.fcen.uba.ar/).
 
 ## Writing
 
-Coming soon.
+{% for post in site.posts %}- [{{ post.title }}]({{ post.url }}) — {{ post.date | date: "%B %Y" }}
+{% endfor %}
 
 ## Elsewhere
 
