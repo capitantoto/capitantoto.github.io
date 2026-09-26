@@ -1,0 +1,44 @@
+# Builds the site with Typst's HTML export and publishes out/ to GitHub Pages on every push to master.
+name: pages
+
+on:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: typst-community/setup-typst@v5
+        with:
+          typst-version: 0.15.1
+      - run: make
+      # The Makefile skips a post that fails to compile so local drafts don't block the build; in CI any failure is fatal.
+      - name: Fail on skipped posts
+        run: |
+          if grep -lE "(^|: )error:" build/log/*.log; then exit 1; fi
+      - uses: actions/configure-pages@v6
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: out
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
