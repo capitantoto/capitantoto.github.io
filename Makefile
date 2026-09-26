@@ -73,9 +73,10 @@ out/style.css: style.css
 	@mkdir -p $(@D)
 	cp $< $@
 
-# Post links to files under assets/ are relative (../assets/...), so each mode gets its own copy.
+# Post links to files under assets/ are relative (../assets/...), so each mode gets its own copy. static/ (404 page, redirects from old URLs) is copied to the site root.
 assets:
 	@$(foreach m,$(MODES),mkdir -p $(dir_$(m))/assets && rsync -a --delete assets/ $(dir_$(m))/assets/;)
+	@rsync -a static/ out/
 
 clean:
 	rm -rf out build

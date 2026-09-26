@@ -13,7 +13,7 @@ permissions:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -23,11 +23,14 @@ jobs:
       - uses: typst-community/setup-typst@v5
         with:
           typst-version: 0.15.1
-      - run: make
-      # The Makefile skips a post that fails to compile so local drafts don't block the build; in CI any failure is fatal.
+      # The Makefile skips a post that is missing or fails to compile so local drafts don't block the build; in CI either is fatal.
+      - run: make | tee build.txt
+        shell: bash  # explicit bash adds -o pipefail, so a make failure is not masked by tee
       - name: Fail on skipped posts
         run: |
+          if grep -q "^skip" build.txt; then exit 1; fi
           if grep -lE "(^|: )error:" build/log/*.log; then exit 1; fi
+          test "$(ls out/posts/*.html | wc -l)" -gt 0
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
