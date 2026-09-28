@@ -3,7 +3,7 @@
 
 #let meta = (
   title: "Conclusiones y próximos pasos",
-  date: none,
+  date: "2026-12-28",
   series: "fermat",
   part: 14,
   summary: [Qué aprendimos sobre cuándo ayuda (y cuándo no) la distancia de Fermat en clasificación, y las líneas de trabajo que quedan abiertas.],

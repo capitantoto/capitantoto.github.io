@@ -3,7 +3,7 @@
 
 #let meta = (
   title: "Cuando la variedad es desconocida: aprender la distancia",
-  date: none,
+  date: "2026-11-02",
   series: "fermat",
   part: 6,
   summary: [PCA, las ventanas de Parzen en variedades, las cartas de Brand e Isomap: cómo distintos métodos intentan recuperar la geometría de los datos a partir de la muestra.],

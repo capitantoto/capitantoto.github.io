@@ -132,12 +132,8 @@
 #let ficha-de(dataset) = ficha-link(dataset, raw(dataset))
 
 // Wrapper de `figure` que estira el cuerpo por encima del ancho del texto.
-// Por defecto 140%; útil para gráficos triples (lunas/circulos/espirales) y
-// figuras-resumen panorámicas.
-#let wide_figure(width: 140%, body, ..args) = figure(
-  box(width: width, body),
-  ..args,
-)
+// Figura más ancha que la columna de texto (el cuerpo lleva la clase CSS `wide-body`, así la etiqueta sigue apuntando a la figura); útil para gráficos triples (lunas/circulos/espirales) y figuras-resumen panorámicas. `width` se acepta por compatibilidad con la tesis y se ignora: el ancho lo fija el CSS.
+#let wide_figure(width: auto, body, ..args) = figure(html.elem("div", attrs: (class: "wide-body"), body), ..args)
 
 // CSV con columnas (clf, cant, datasets). Renderiza la primera columna
 // pasando por los macros estilizados de clasificador, la última envolviendo
@@ -223,7 +219,7 @@
   let highlights = json("/assets/fermat/data/" + dataset + "-r2-highlights.json")
   let izquierda = img(dataset + "-scatter.svg") + highlights_table(highlights)
   let derecha = ("r2", "accuracy").map(m => img(dataset + "-" + m + "-boxplot.svg")).join()
-  figure(
+  wide_figure(
     kind: image,
     fig-grid(columns: "1fr 1fr", gap: "1em", izquierda, derecha),
     caption: flex-caption[_Scatterplot_, tabla resumen y _boxplots_ de $R^2$ y _accuracy_ en el dataset #raw(dataset)][Resumen de resultados para #raw(dataset)],

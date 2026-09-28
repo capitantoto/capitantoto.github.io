@@ -3,7 +3,7 @@
 
 #let meta = (
   title: "La maldición de la dimensionalidad y la hipótesis de la variedad",
-  date: none,
+  date: "2026-10-12",
   series: "fermat",
   part: 3,
   summary: [Por qué estimar densidades se vuelve imposible en alta dimensión, y por qué aun así el aprendizaje automático funciona: los datos parecen vivir en variedades de mucha menor dimensión que el espacio donde se registran.],

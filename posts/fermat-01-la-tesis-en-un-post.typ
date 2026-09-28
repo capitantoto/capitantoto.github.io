@@ -3,7 +3,7 @@
 
 #let meta = (
   title: "La tesis en un post: distancia de Fermat para clasificar",
-  date: none,
+  date: "2026-09-28",
   series: "fermat",
   part: 1,
   summary: [De dónde salió, qué se preguntó y qué encontró mi tesis de maestría sobre distancia de Fermat en clasificadores de densidad por núcleos, y un mapa para leer el resto de la serie en el orden y la profundidad que cada uno prefiera.],

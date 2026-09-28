@@ -3,7 +3,7 @@
 
 #let meta = (
   title: "Clasificar estimando densidades",
-  date: none,
+  date: "2026-10-05",
   series: "fermat",
   part: 2,
   summary: [El problema de clasificación, el clasificador de Bayes y cómo la estimación de densidad por núcleos lo convierte en un algoritmo concreto: el clasificador de densidad por núcleos.],

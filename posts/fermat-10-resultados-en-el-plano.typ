@@ -3,7 +3,7 @@
 
 #let meta = (
   title: "Resultados I: el marcador global y las curvas en el plano",
-  date: none,
+  date: "2026-11-30",
   series: "fermat",
   part: 10,
   summary: [Quién ganó en los 20 datasets, y cómo se comportan #fkdc y #fkn en lunas, círculos, espirales y anteojos, con poco y con mucho ruido.],
@@ -51,7 +51,7 @@ Para comenzar, consideramos el caso no trivial más sencillo con $d > d_MM$: $d=
 
 
 #let plotting_seed = 1075
-#figure(
+#wide_figure(
   kind: image,
   fig-grid(
     columns: "repeat(3, 1fr)",
@@ -114,7 +114,7 @@ Una inspección ocular a las fronteras de decisión revela las limitaciones de d
 Entre #kn y #fkn casi no observamos diferencias, asunto que ahondaremos en las partes #parte("fermat-11-de-donde-sale-la-ventaja")[11] y #parte("fermat-12-resultados-en-3d")[12]. Por lo pronto, sí se nota que se adaptan bastante bien a los datos, con algunas regiones de incertidumbre que resultan onerosas en términos de $R^2$: a primera vista los mapas de decisión recién expuestos se ven muy similares, pero las pequeñas diferencias de probabilidades resultaron en una diferencia de $0.19$ en $R^2$ _en contra_ del #fkn para esta semilla #footnote[La diferencia en la _mediana_ de $R^2$ para ambos es mucho menor, $approx 0.03$, lo cual resalta la sensibilidad de los resultados a la semilla aleatorizante y la importancia de realizar muchas repeticiones de cada experimento para evitar resultados espurios.]. También resulta llamativa la "creatividad" de #gbt para aproximar las verdaderas fronteras --- espirales curvas --- con una serie de _splits_ binarios, que le permiten dibujar una especie de "espiral rectangular".
 
 #let clfs = ("kdc", "fkdc", "svc", "kn", "fkn", "gbt", "lr", "gnb")
-#figure(
+#wide_figure(
   kind: image,
   fig-grid(columns: "repeat(4, 1fr)", ..clfs.map(clf => img(
       "espirales_lo-" + clf + "-decision_boundary.svg",
@@ -128,7 +128,7 @@ Entre #kn y #fkn casi no observamos diferencias, asunto que ahondaremos en las p
 #kdc ofrece una frontera aún más regular que #kn, sin perder en $R^2$ y hasta mejorando la exactitud. Y por encima de este ya destacable rendimiento, el uso de la distancia de Fermat _incrementa_ la confianza en estas regiones --- nótese cómo se afinan las áreas grises de incertidumbre y aumenta la superficie de rojo/azul sólido, mejorando otro poco el $R^2$.
 
 
-#figure(
+#wide_figure(
   kind: image,
   fig-grid(
     img("espirales_lo-fkdc-decision_boundary.svg"),
@@ -148,7 +148,7 @@ Consideremos ahora los mismos datasets que hasta ahora, pero muestreando las obs
 
 $ sigma_"lunas" = 0.5 quad sigma_"circulos" = 0.2 quad sigma_"espirales" = 0.2. $
 
-#figure(
+#wide_figure(
   kind: image,
   fig-grid(
     columns: "repeat(3, 1fr)",
@@ -174,7 +174,7 @@ En general, #fkdc y #fkn siguen siendo competitivos, pero el "terreno de juego" 
 
 El aumento en la cantidad de ruido hace la tarea más difícil para _todos_ los estimadores, pero los métodos basados en densidad por núcleos parecen sufrirlo particularmente, aunque solo sea porque "caen desde más alto", a un nivel de rendimiento similar al de otros métodos.
 
-#figure(
+#wide_figure(
   kind: image,
   fig-grid(
     columns: "repeat(3, 1fr)",
@@ -189,7 +189,7 @@ El aumento en la cantidad de ruido hace la tarea más difícil para _todos_ los 
 #{
   let hi_clfs = (("fkdc", fkdc), ("gbt", gbt), ("svc", svc))
   let hi_datasets = ("lunas_hi", "circulos_hi", "espirales_hi")
-  figure(
+  wide_figure(
     fig-grid(
       columns: "auto 1fr 1fr 1fr",
       [], ..hi_datasets.map(d => [*#raw(d)*]),

@@ -2,13 +2,15 @@
 // Build inputs (all optional, so a post also compiles on its own with `typst compile --features html --root . posts/<slug>.typ`):
 //   mode  = "personal" (default) | "consulting"
 //   consulting-tab = "true" shows the Consulting tab in personal mode (off by default: the consulting mode is not published yet)
-//   posts = comma-separated slugs whose metadata sits in build/meta/<slug>.json (written by the Makefile); enables series navigation
+//   posts = comma-separated published slugs, newest first (the Makefile writes their metadata to build/meta/<slug>.json); enables the index and series navigation
+//   all   = comma-separated slugs of every post with metadata, including scheduled ones; used for series totals and the "next part" notice
 //   slug  = slug of the post being compiled
 #let mode = sys.inputs.at("mode", default: "personal")
 #let consulting = mode == "consulting"
 #let consulting-tab = consulting or sys.inputs.at("consulting-tab", default: "false") == "true"
 #let current-slug = sys.inputs.at("slug", default: none)
 #let listed-slugs = sys.inputs.at("posts", default: "").split(",").filter(s => s != "")
+#let all-slugs = sys.inputs.at("all", default: "").split(",").filter(s => s != "")
 
 #let person = (
   name: "Gonzalo Barrera Borla",
@@ -34,6 +36,8 @@
     part: (n, total) => "Parte " + str(n) + " de " + str(total),
     prev: "Anterior",
     next: "Siguiente",
+    upcoming: "Próxima parte",
+    soon: "Próximamente",
     draft: "borrador",
     stub: "esbozo",
     undated: "sin fecha",
@@ -44,6 +48,8 @@
     part: (n, total) => "Part " + str(n) + " of " + str(total),
     prev: "Previous",
     next: "Next",
+    upcoming: "Next part",
+    soon: "Coming soon",
     draft: "draft",
     stub: "stub",
     undated: "undated",
@@ -73,8 +79,9 @@
   } else if it.has("body") { _plain(it.body) } else if it.func() == [ ].func() { " " } else { "" }
 }
 
-// Metadata of every listed post, from the JSON files the Makefile writes (title, date, series, part, status, lang; no summary).
+// Metadata from the JSON files the Makefile writes (title, date, series, part, status, lang; no summary): published posts, and every post.
 #let catalog() = listed-slugs.map(s => json("/build/meta/" + s + ".json") + (slug: s))
+#let catalog-all() = all-slugs.map(s => json("/build/meta/" + s + ".json") + (slug: s))
 
 // Equations become inline SVG frames (math nested inside a frame is left to the paged layout). A numbered block equation is re-rendered unnumbered and its number is set as HTML text, flush right.
 #let _eq(it) = context if target() != "html" { it } else if not it.block {
@@ -157,12 +164,21 @@ addEventListener('scroll',hide,{passive:true});addEventListener('resize',hide);
   show align: _align
   show rotate: it => it.body
   show columns: it => it.body
+  // A link to a post that isn't released yet (scheduled or draft) renders as plain text until the post is published.
+  show link: it => {
+    if type(it.dest) != str or it.dest.contains(":") { return it }
+    let file = it.dest.split("#").first().split("/").last()
+    if not file.ends-with(".html") { return it }
+    let slug = file.slice(0, file.len() - 5)
+    if slug in all-slugs and slug not in listed-slugs { html.span(class: "unreleased", title: _t(lang).soon, it.body) } else { it }
+  }
   // Link image files instead of inlining them as data URIs; root-absolute "/assets/..." becomes relative to the page.
   show image: it => if type(it.source) == str and it.source.starts-with("/assets/") {
     html.elem("img", attrs: (src: up + it.source.slice(1), alt: if it.alt == none { "" } else { it.alt }, loading: "lazy"))
   } else { it }
 
   html.elem("link", attrs: (rel: "stylesheet", href: site-root + "style.css"))
+  html.elem("link", attrs: (rel: "alternate", type: "application/atom+xml", title: site-title, href: site-root + "feed.xml"))
   html.header(class: "site-header" + if consulting { " consulting" }, {
     html.a(class: "site-name", href: up + "index.html", if consulting {
       html.span(class: "wordmark", "Borlandux")
@@ -208,18 +224,22 @@ addEventListener('scroll',hide,{passive:true});addEventListener('resize',hide);
 )
 
 #let _series-nav(series, part, lang) = {
-  let entries = catalog().filter(e => e.series == series and e.part != none).sorted(key: e => e.part)
-  if entries.len() == 0 { return (none, none) }
+  let in-series(entries) = entries.filter(e => e.series == series and e.part != none).sorted(key: e => e.part)
+  let released = in-series(catalog())
+  // The total counts scheduled parts too, so part 2 of 14 reads as such the week it comes out.
+  let planned = in-series(catalog-all()).filter(e => e.status == "published" and e.date != none)
+  if released.len() == 0 { return (none, none) }
   let t = _t(lang)
-  let pos = entries.position(e => e.part == part)
+  let pos = released.position(e => e.part == part)
   let head = html.p(class: "series", {
     html.span(class: "series-name", series-name(series, lang))
     [ · ]
-    (t.part)(part, entries.len())
+    (t.part)(part, calc.max(planned.len(), released.len()))
   })
   let foot = if pos == none { none } else {
-    let prev = if pos > 0 { entries.at(pos - 1) }
-    let next = if pos + 1 < entries.len() { entries.at(pos + 1) }
+    let prev = if pos > 0 { released.at(pos - 1) }
+    let next = if pos + 1 < released.len() { released.at(pos + 1) }
+    let upcoming = if next == none { planned.find(e => e.part > part) }
     html.nav(class: "series-nav", aria-label: series-name(series, lang), {
       if prev != none {
         html.a(class: "prev", href: prev.slug + ".html", {
@@ -231,6 +251,12 @@ addEventListener('scroll',hide,{passive:true});addEventListener('resize',hide);
         html.a(class: "next", href: next.slug + ".html", {
           html.span(class: "dir", t.next + " →")
           html.span(class: "t", next.title)
+        })
+      } else if upcoming != none {
+        html.div(class: "next upcoming", {
+          html.span(class: "dir", t.upcoming + " · " )
+          format-date(upcoming.date, lang)
+          html.span(class: "t", upcoming.title)
         })
       }
     })
@@ -275,36 +301,25 @@ addEventListener('scroll',hide,{passive:true});addEventListener('resize',hide);
   )
 }
 
-// Home page post list: newest first (reverse posts.typ order), each series grouped in part order at the position of its latest part.
+// Home page post list, newest first (the Makefile passes published slugs in that order); series posts carry their series and part.
 // Summaries come from importing each post's `meta`, so only slugs that built are listed.
 #let post-index() = {
-  let metas = listed-slugs.map(s => {
-    import "/posts/" + s + ".typ": meta
-    meta + (slug: s)
-  })
-  let entry(m, show-part: false) = html.li(class: "entry", {
-    html.p(class: "entry-title", {
-      html.a(href: "posts/" + m.slug + ".html", m.title)
-      let badge = status-badge(m.at("status", default: "draft"), m.at("lang", default: "es"))
-      if badge != none [ #badge]
+  let entry(m) = {
+    let lang = m.at("lang", default: "es")
+    html.li(class: "entry", {
+      let series = m.at("series", default: none)
+      if series != none and m.at("part", default: none) != none {
+        html.p(class: "series-label", series-name(series, lang) + " · " + str(m.part))
+      }
+      html.p(class: "entry-title", html.a(href: "posts/" + m.slug + ".html", m.title))
+      if m.at("date", default: none) != none { html.p(class: "entry-date", format-date(m.date, lang)) }
+      if m.at("summary", default: none) != none { html.p(class: "entry-summary", m.summary) }
     })
-    if m.at("date", default: none) != none { html.p(class: "entry-date", format-date(m.date, m.at("lang", default: "es"))) }
-    if m.at("summary", default: none) != none { html.p(class: "entry-summary", m.summary) }
-  })
-  let seen = ()
-  let blocks = ()
-  for m in metas { // posts.typ order, i.e. reading order; switch to .rev() for newest-first once posts carry dates
-    let s = m.at("series", default: none)
-    if s == none { blocks.push(entry(m)) } else if s not in seen {
-      seen.push(s)
-      let parts = metas.filter(x => x.at("series", default: none) == s).sorted(key: x => x.at("part", default: 0))
-      blocks.push(html.li(class: "series-group", {
-        html.p(class: "series-label", series-name(s, m.at("lang", default: "es")))
-        html.ol(class: "series-parts", parts.map(entry).join())
-      }))
-    }
   }
-  html.ul(class: "post-list", blocks.join())
+  html.ul(class: "post-list", listed-slugs.map(s => {
+    import "/posts/" + s + ".typ": meta
+    entry(meta + (slug: s))
+  }).join())
 }
 
 // Optional helper for posts: the shared bibliography.

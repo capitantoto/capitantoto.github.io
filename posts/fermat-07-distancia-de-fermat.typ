@@ -3,7 +3,7 @@
 
 #let meta = (
   title: "Distancias basadas en densidad y la distancia de Fermat",
-  date: none,
+  date: "2026-11-09",
   series: "fermat",
   part: 7,
   summary: [Por qué no alcanza con conocer la geometría, cómo se define una distancia que abarata los caminos por regiones densas, y qué garantiza la distancia de Fermat muestral.],

@@ -3,7 +3,7 @@
 
 #let meta = (
   title: "Resultados IV: datasets “orgánicos” (d ≥ 4)",
-  date: none,
+  date: "2026-12-21",
   series: "fermat",
   part: 13,
   summary: [Pingüinos, iris, vino, dígitos y MNIST: qué pasa con los clasificadores basados en la distancia de Fermat fuera de las variedades sintéticas, y por qué la escala de los atributos importa más de lo que esperábamos.],
