@@ -13,6 +13,7 @@ permissions:
   contents: read
   pages: write
   id-token: write
+  actions: write
 
 concurrency:
   group: pages
@@ -33,7 +34,13 @@ jobs:
         run: |
           if grep -q "^skip" build.txt; then exit 1; fi
           if grep -lE "(^|: )error:" build/log/*.log; then exit 1; fi
-          test "$(ls out/posts/*.html | wc -l)" -gt 0
+          if ! ls out/posts/*.html >/dev/null 2>&1; then echo "no post is due: refusing to deploy an empty blog"; exit 1; fi
+      # Scheduled workflows are disabled after 60 days without repository activity; re-enabling on every run keeps the daily release alive.
+      - name: Keep schedule alive
+        if: github.event_name == 'schedule'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/pages.yml/enable"
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:

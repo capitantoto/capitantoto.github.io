@@ -7,15 +7,18 @@ Personal site and blog of Gonzalo Barrera Borla, written in Typst and built with
 - `posts/<slug>.typ` — one file per post; files starting with `_` are ignored. Each defines `#let meta = (title, date, series, part, summary, status, lang)` and then `#show: post.with(..meta)`.
 - `scripts/posts.py` — picks the posts to publish and writes the Atom feed (`feed.xml`).
 
+- `pages/` — home (post index) and About.
+- `lib.typ` — page template: header, series navigation, math as inline SVG, footnote tooltips, image and grid handling.
+- `fermat.typ` — macros shared by the Fermat-distance series; `refs.bib` its bibliography.
+- `style.css`, `assets/` — styles, images and data files.
+
 ## Publishing
 
 A post is published when its `status` is `"published"` and its `date` (`"YYYY-MM-DD"`, Buenos Aires calendar) is today or earlier. Drafts (`"draft"`, `"stub"`) and future-dated posts are not built. The home page lists published posts newest first.
 
 To schedule a post, give it a future date: the daily CI build releases it that morning. Until then, links to it from other posts render as plain text, and the previous part of its series announces it with its date. Preview a future state locally with `make TODAY=YYYY-MM-DD`.
-- `pages/` — home (post index) and About.
-- `lib.typ` — page template: header, series navigation, math as inline SVG, footnote tooltips, image and grid handling.
-- `fermat.typ` — macros shared by the Fermat-distance series; `refs.bib` its bibliography.
-- `style.css`, `assets/` — styles, images and data files.
+
+GitHub disables scheduled workflows in a repository with no activity for 60 days; each scheduled run calls the workflow-enable API to keep the schedule alive. If a weekly post fails to appear, check that the `pages` workflow is still enabled (Actions tab).
 
 ## Build
 

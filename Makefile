@@ -70,7 +70,7 @@ out/consulting/%.html: pages/%.typ $(PAGE_DEPS)
 out/%.html: pages/%.typ $(PAGE_DEPS)
 	$(call compile,personal,$(BUILT),$<,$@,,page-$*.personal)
 
-out/feed.xml: scripts/posts.py build/list-BUILT
+out/feed.xml: scripts/posts.py build/list-BUILT $(BUILT:%=build/meta/%.json)
 	@mkdir -p $(@D)
 	python3 scripts/posts.py feed $(TODAY) $@ $(BUILT)
 

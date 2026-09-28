@@ -37,6 +37,7 @@
     prev: "Anterior",
     next: "Siguiente",
     upcoming: "Próxima parte",
+    soon: "Próximamente",
     draft: "borrador",
     stub: "esbozo",
     undated: "sin fecha",
@@ -48,6 +49,7 @@
     prev: "Previous",
     next: "Next",
     upcoming: "Next part",
+    soon: "Coming soon",
     draft: "draft",
     stub: "stub",
     undated: "undated",
@@ -168,7 +170,7 @@ addEventListener('scroll',hide,{passive:true});addEventListener('resize',hide);
     let file = it.dest.split("#").first().split("/").last()
     if not file.ends-with(".html") { return it }
     let slug = file.slice(0, file.len() - 5)
-    if slug in all-slugs and slug not in listed-slugs { html.span(class: "unreleased", title: "Próximamente", it.body) } else { it }
+    if slug in all-slugs and slug not in listed-slugs { html.span(class: "unreleased", title: _t(lang).soon, it.body) } else { it }
   }
   // Link image files instead of inlining them as data URIs; root-absolute "/assets/..." becomes relative to the page.
   show image: it => if type(it.source) == str and it.source.starts-with("/assets/") {
@@ -225,7 +227,7 @@ addEventListener('scroll',hide,{passive:true});addEventListener('resize',hide);
   let in-series(entries) = entries.filter(e => e.series == series and e.part != none).sorted(key: e => e.part)
   let released = in-series(catalog())
   // The total counts scheduled parts too, so part 2 of 14 reads as such the week it comes out.
-  let planned = in-series(catalog-all()).filter(e => e.status == "published")
+  let planned = in-series(catalog-all()).filter(e => e.status == "published" and e.date != none)
   if released.len() == 0 { return (none, none) }
   let t = _t(lang)
   let pos = released.position(e => e.part == part)
