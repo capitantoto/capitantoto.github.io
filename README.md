@@ -6,7 +6,6 @@ Personal site and blog of Gonzalo Barrera Borla, written in Typst and built with
 
 - `posts/<slug>.typ` — one file per post; files starting with `_` are ignored. Each defines `#let meta = (title, date, series, part, summary, status, lang)` and then `#show: post.with(..meta)`.
 - `scripts/posts.py` — picks the posts to publish and writes the Atom feed (`feed.xml`).
-
 - `pages/` — home (post index) and About.
 - `lib.typ` — page template: header, series navigation, math as inline SVG, footnote tooltips, image and grid handling.
 - `fermat.typ` — macros shared by the Fermat-distance series; `refs.bib` its bibliography.
