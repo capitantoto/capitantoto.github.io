@@ -22,7 +22,7 @@
 Según la #link("https://dle.rae.es/ablaci%C3%B3n")[RAE], "ablación" proviene del latín tardío "ablatio, -ōnis", y significa 'acción de quitar'. ¿Qué se pierde en términos de $R^2$ al _no_ usar la distancia de Fermat muestral #sfd en estos algoritmos? Sirvan para enfocar la atención los gráficos de dispersión del $R^2$ alcanzado en $XX_"test"$ para #kn y #kdc con y sin distancia de Fermat, en las #reps repeticiones de cada Tarea.
 
 #let curvas = ("lunas", "circulos", "espirales")
-#figure(
+#wide_figure(
   fig-grid(
     columns: "auto 1fr 1fr",
     // column headers
@@ -68,7 +68,7 @@ Ahora bien, esto es solo en _un_ dataset, con _una_ semilla específica. ¿Se re
 
 #let semillas = (7354, 8527, 1188)
 
-#figure(
+#wide_figure(
   fig-grid(
     columns: "auto 1fr 1fr 1fr",
     gap: "1px",
@@ -112,7 +112,7 @@ Resulta ser que
 - el ancho de banda seleccionado es ligera pero consistentemente _menor_ que el que toma #kdc.
 
 Veamos cómo se comparan los valores de $R^2$ que alcanza cada algoritmo en cada semilla:
-#figure(
+#wide_figure(
   kind: image,
   fig-grid(
     img("lunas_lo-[f]kdc-score-vs-bandwidth.svg"),

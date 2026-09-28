@@ -82,7 +82,7 @@ $ s = 1182, quad Delta_(R^2)=0.111, quad alpha_#fkdc = alpha_#kdc = 1, quad h_#k
 que cuesta explicar únicamente en base al mismo fenómeno.
 
 
-#figure(
+#wide_figure(
   kind: image,
   fig-grid(
     gap: ".5em",
@@ -165,7 +165,7 @@ Sobre los datasets de `lunas`, `circulos` y `espirales` analizamos los efectos d
 
 El efecto sobre el $R^2$ es dramático para todos los clasificadores, pero la familia $cal(K)$ lo sufre en particular: en `helices_12` y `hueveras_12` ningún clasificador se distingue del azar, pero en `pionono_12` y `eslabones_12` el $R^2$ de $cal(K)$ se desploma a $approx 0.1$ y $approx 0.25$, mientras que #gbt, #gnb y #logr conservan prácticamente intacto el $R^2$ alcanzado en la versión sin ruido.
 
-#figure(
+#wide_figure(
   kind: image,
   fig-grid(
     ..("pionono", "eslabones", "helices", "hueveras").map(f => img(f + "-caida_r2-15d.svg")),
