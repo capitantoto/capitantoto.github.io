@@ -3,7 +3,7 @@
 
 #let meta = (
   title: "Resultados III: hélices, hueveras y otras variedades en 3D",
-  date: none,
+  date: "2026-12-14",
   series: "fermat",
   part: 12,
   summary: [Donde la distancia de Fermat sí aporta algo propio --- variedades curvas y muy próximas entre sí --- y qué pasa cuando se agregan 12 dimensiones de ruido.],

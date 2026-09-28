@@ -350,3 +350,8 @@ section[role="doc-bibliography"] .prefix a { text-decoration: none; }
   .fn-tip { background: var(--tint); box-shadow: 0 4px 16px rgb(0 0 0 / 0.5); }
 }
 .tototren { margin-top: 3rem; font-family: var(--sans); font-size: 0.75rem; color: var(--muted); text-align: right; }
+
+/* Scheduled posts: a link to a part not yet out reads as plain text; the series footer names the next part and its date. */
+.unreleased { color: var(--muted); border-bottom: 1px dotted var(--rule); cursor: help; }
+.series-nav .upcoming { color: var(--muted); }
+.series-nav .upcoming time { font-variant-numeric: tabular-nums; }

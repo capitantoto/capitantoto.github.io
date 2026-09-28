@@ -1,9 +1,12 @@
-# Builds the site with Typst's HTML export and publishes out/ to GitHub Pages on every push to master.
+# Builds the site with Typst's HTML export and publishes out/ to GitHub Pages on every push to master and once a day.
 name: pages
 
 on:
   push:
     branches: [master]
+  # Daily rebuild at 08:00 Buenos Aires time releases posts scheduled for that day.
+  schedule:
+    - cron: "0 11 * * *"
   workflow_dispatch:
 
 permissions:

@@ -3,7 +3,7 @@
 
 #let meta = (
   title: "Variedades de Riemann, lo justo y necesario",
-  date: none,
+  date: "2026-10-19",
   series: "fermat",
   part: 4,
   summary: [Topología, cartas, métricas, geodésicas, mapa exponencial y radio de inyectividad: las definiciones mínimas para hablar de densidades sobre una variedad.],

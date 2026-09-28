@@ -3,7 +3,7 @@
 
 #let meta = (
   title: "Estimar densidades (y clasificar) sobre una variedad",
-  date: none,
+  date: "2026-10-26",
   series: "fermat",
   part: 5,
   summary: [De von Mises y Fisher al estimador de Pelletier: cómo se estima una densidad por núcleos en una variedad de Riemann, qué papel juega la densidad de volumen y cómo se construye con él un clasificador consistente.],

@@ -3,7 +3,7 @@
 
 #let meta = (
   title: "Cómo comparamos clasificadores",
-  date: none,
+  date: "2026-11-23",
   series: "fermat",
   part: 9,
   summary: [Tareas, exactitud y $R^2$ de McFadden, algoritmos de referencia, validación cruzada, #reps repeticiones por dataset y una regla de parsimonia: el diseño experimental detrás de los resultados.],

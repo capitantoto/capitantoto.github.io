@@ -3,7 +3,7 @@
 
 #let meta = (
   title: "La propuesta: clasificadores con distancia de Fermat",
-  date: none,
+  date: "2026-11-16",
   series: "fermat",
   part: 8,
   summary: [Qué implementamos --- #kdc, #fkdc y #fkn --- y las tres decisiones de diseño que hicieron falta: distancia de Fermat _out-of-sample_, una sola ventana global y la omisión de la densidad de volumen.],

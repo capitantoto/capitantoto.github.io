@@ -3,7 +3,7 @@
 
 #let meta = (
   title: "Resultados II: ¿de dónde sale la ventaja de f-KDC?",
-  date: none,
+  date: "2026-12-07",
   series: "fermat",
   part: 11,
   summary: [Un estudio de ablación y una auditoría de los hiperparámetros elegidos en `lunas_lo` muestran que, en el plano, la ventaja de #fkdc sobre #kdc no viene de la distancia de Fermat.],
