@@ -7,7 +7,7 @@
   series: "fermat",
   part: 12,
   summary: [Donde la distancia de Fermat sí aporta algo propio --- variedades curvas y muy próximas entre sí --- y qué pasa cuando se agregan 12 dimensiones de ruido.],
-  status: "published",
+  status: "draft",
   lang: "es",
 )
 #show: post.with(..meta)

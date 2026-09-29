@@ -7,7 +7,7 @@
   series: "fermat",
   part: 2,
   summary: [El problema de clasificación, el clasificador de Bayes y cómo la estimación de densidad por núcleos lo convierte en un algoritmo concreto: el clasificador de densidad por núcleos.],
-  status: "published",
+  status: "draft",
   lang: "es",
 )
 #show: post.with(..meta)

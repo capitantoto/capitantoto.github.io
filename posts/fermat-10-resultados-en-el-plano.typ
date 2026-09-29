@@ -7,7 +7,7 @@
   series: "fermat",
   part: 10,
   summary: [Quién ganó en los 20 datasets, y cómo se comportan #fkdc y #fkn en lunas, círculos, espirales y anteojos, con poco y con mucho ruido.],
-  status: "published",
+  status: "draft",
   lang: "es",
 )
 #show: post.with(..meta)

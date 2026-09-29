@@ -7,7 +7,7 @@
   series: "fermat",
   part: 14,
   summary: [Qué aprendimos sobre cuándo ayuda (y cuándo no) la distancia de Fermat en clasificación, y las líneas de trabajo que quedan abiertas.],
-  status: "published",
+  status: "draft",
   lang: "es",
 )
 #show: post.with(..meta)

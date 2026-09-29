@@ -7,7 +7,7 @@
   series: "fermat",
   part: 7,
   summary: [Por qué no alcanza con conocer la geometría, cómo se define una distancia que abarata los caminos por regiones densas, y qué garantiza la distancia de Fermat muestral.],
-  status: "published",
+  status: "draft",
   lang: "es",
 )
 #show: post.with(..meta)

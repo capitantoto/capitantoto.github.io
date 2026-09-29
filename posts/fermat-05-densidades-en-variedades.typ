@@ -7,7 +7,7 @@
   series: "fermat",
   part: 5,
   summary: [De von Mises y Fisher al estimador de Pelletier: cómo se estima una densidad por núcleos en una variedad de Riemann, qué papel juega la densidad de volumen y cómo se construye con él un clasificador consistente.],
-  status: "published",
+  status: "draft",
   lang: "es",
 )
 #show: post.with(..meta)
