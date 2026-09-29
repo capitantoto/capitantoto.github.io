@@ -7,7 +7,7 @@
   series: "fermat",
   part: 3,
   summary: [Por qué estimar densidades se vuelve imposible en alta dimensión, y por qué aun así el aprendizaje automático funciona: los datos parecen vivir en variedades de mucha menor dimensión que el espacio donde se registran.],
-  status: "published",
+  status: "draft",
   lang: "es",
 )
 #show: post.with(..meta)

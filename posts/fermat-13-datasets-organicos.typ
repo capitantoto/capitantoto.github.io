@@ -7,7 +7,7 @@
   series: "fermat",
   part: 13,
   summary: [Pingüinos, iris, vino, dígitos y MNIST: qué pasa con los clasificadores basados en la distancia de Fermat fuera de las variedades sintéticas, y por qué la escala de los atributos importa más de lo que esperábamos.],
-  status: "published",
+  status: "draft",
   lang: "es",
 )
 #show: post.with(..meta)
